@@ -14,8 +14,16 @@ export function renderCryptoCards(coins) {
 			<div class="coin-info">
 				<h3 class="coin-name"></h3>
 				<p class="coin-price"></p>
+				<div class="change-container"></div>
 			</div>
 		`;
+
+		const changeHTML = getPriceChange(coin.price_change_percentage_24h);
+
+		const changeContainer = card.querySelector('.change-container');
+		if (changeContainer) {
+			changeContainer.innerHTML = changeHTML;
+		}
 
 		const img = card.querySelector('.coin-logo');
 		if (img instanceof HTMLImageElement) {
@@ -37,4 +45,20 @@ export function renderCryptoCards(coins) {
 		cryptoContainer.appendChild(card);
 	});
 
+}
+
+function getPriceChange(percentage) {
+	if (percentage === null || percentage === undefined) {
+		return `<p class="coin-change">0.00%</p>`;
+	}
+
+	const changeClass = percentage >= 0 ? 'price-up' : 'price-down';
+
+	const prefix = percentage > 0 ? '+' : '';
+
+	return `
+		<p class="coin-change ${changeClass}">
+			${prefix}${percentage.toFixed(2)}%
+		</p>
+	`;
 }

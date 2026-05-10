@@ -45,12 +45,14 @@ body {
 	font-size: 16px;
 	font-weight: 600;
 }
-.coin-price{
+
+.coin-price {
 	margin: 4px 0 0 0;
 	font-size: 14px;
 	color: #848e9c;
 }
-.error-message{
+
+.error-message {
 	grid-column: 1 / -1;
 	text-align: center;
 	padding: 30px;
@@ -58,4 +60,16 @@ body {
 	border: 1px dashed #f0b90b;
 	border-radius: 12px;
 	color: #f0b90b;
+}
+
+.price-up {
+	color: #2ecc71;
+}
+
+.price-down {
+	color: #e74c3c;
+}
+
+.coin-change {
+	font-size: 12px;
 }
